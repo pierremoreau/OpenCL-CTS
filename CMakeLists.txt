@@ -10,12 +10,6 @@ set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-if(CMAKE_BUILD_TYPE STREQUAL "release")
-  set (BUILD_FLAVOR "release")
-else(CMAKE_BUILD_TYPE STREQUAL "release")
-  set (BUILD_FLAVOR "debug")
-endif(CMAKE_BUILD_TYPE STREQUAL "release")
-
 add_definitions(-DCL_TARGET_OPENCL_VERSION=300)
 add_definitions(-DCL_USE_DEPRECATED_OPENCL_2_1_APIS=1)
 add_definitions(-DCL_USE_DEPRECATED_OPENCL_2_0_APIS=1)
@@ -196,12 +190,6 @@ include_directories(${CLConform_SOURCE_DIR}/test_common/harness
                     ${CLConform_SOURCE_DIR}/test_common/gles
                     ${CLConform_SOURCE_DIR}/test_common/gl
                     ${CLConform_SOURCE_DIR}/test_common)
-
-if(CMAKE_BUILD_TYPE STREQUAL "release")
-  set (BUILD_FLAVOR "release")
-elseif (CMAKE_BUILD_TYPE STREQUAL "debug")
-  set (BUILD_FLAVOR "debug")
-endif(CMAKE_BUILD_TYPE STREQUAL "release")
 
 
 add_subdirectory(test_common)
