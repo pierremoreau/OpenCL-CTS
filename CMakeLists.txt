@@ -11,9 +11,9 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 if(CMAKE_BUILD_TYPE STREQUAL "release")
-    set (BUILD_FLAVOR "release")
+  set (BUILD_FLAVOR "release")
 else(CMAKE_BUILD_TYPE STREQUAL "release")
-    set (BUILD_FLAVOR "debug")
+  set (BUILD_FLAVOR "debug")
 endif(CMAKE_BUILD_TYPE STREQUAL "release")
 
 add_definitions(-DCL_TARGET_OPENCL_VERSION=300)
@@ -61,7 +61,7 @@ set(CONFORMANCE_SUFFIX "" )
 #build driver as a dependency of the conformance tests, or other such CMake customization
 option(USE_VENDOR_CUSTOM_FILE "Use Vendor Customization File" OFF)
 if(USE_VENDOR_CUSTOM_FILE)
-    include(CMakeVendor.txt OPTIONAL)
+  include(CMakeVendor.txt OPTIONAL)
 endif(USE_VENDOR_CUSTOM_FILE)
 
 #-----------------------------------------------------------
@@ -93,33 +93,33 @@ endif(CLPP_DEVELOPMENT_OPTIONS)
 # See https://github.com/KhronosGroup/SPIR/ (spirv-1.1 branch or newer SPIR-V-ready
 # branch should be used).
 if(KHRONOS_OFFLINE_COMPILER)
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DKHRONOS_OFFLINE_COMPILER=${KHRONOS_OFFLINE_COMPILER}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DKHRONOS_OFFLINE_COMPILER=${KHRONOS_OFFLINE_COMPILER}")
-    # Additional OpenCL C/C++ compiler option.
-    if(KHRONOS_OFFLINE_COMPILER_OPTIONS)
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DKHRONOS_OFFLINE_COMPILER_OPTIONS=${KHRONOS_OFFLINE_COMPILER_OPTIONS}")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DKHRONOS_OFFLINE_COMPILER_OPTIONS=${KHRONOS_OFFLINE_COMPILER_OPTIONS}")
-    endif(KHRONOS_OFFLINE_COMPILER_OPTIONS)
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DKHRONOS_OFFLINE_COMPILER=${KHRONOS_OFFLINE_COMPILER}")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DKHRONOS_OFFLINE_COMPILER=${KHRONOS_OFFLINE_COMPILER}")
+  # Additional OpenCL C/C++ compiler option.
+  if(KHRONOS_OFFLINE_COMPILER_OPTIONS)
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DKHRONOS_OFFLINE_COMPILER_OPTIONS=${KHRONOS_OFFLINE_COMPILER_OPTIONS}")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DKHRONOS_OFFLINE_COMPILER_OPTIONS=${KHRONOS_OFFLINE_COMPILER_OPTIONS}")
+  endif(KHRONOS_OFFLINE_COMPILER_OPTIONS)
 else(KHRONOS_OFFLINE_COMPILER)
-    message(WARNING "KHRONOS_OFFLINE_COMPILER is not defined!")
-    message(WARNING "Running CL C++ tests will not be possible.")
+  message(WARNING "KHRONOS_OFFLINE_COMPILER is not defined!")
+  message(WARNING "Running CL C++ tests will not be possible.")
 endif(KHRONOS_OFFLINE_COMPILER)
 
 # CL_LIBCLCXX_DIR - path to dir with OpenCL C++ STL (libclcxx)
 # CL_INCLUDE_DIR - path to dir with OpenCL headers
 # CL_LIBCLCXX_DIR - path to dir with OpenCL library
 if(CL_INCLUDE_DIR AND CL_LIB_DIR AND CL_LIBCLCXX_DIR)
-    link_directories(${CL_LIB_DIR})
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DCL_LIBCLCXX_DIR=${CL_LIBCLCXX_DIR}")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DCL_LIBCLCXX_DIR=${CL_LIBCLCXX_DIR}")
+  link_directories(${CL_LIB_DIR})
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -DCL_LIBCLCXX_DIR=${CL_LIBCLCXX_DIR}")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -DCL_LIBCLCXX_DIR=${CL_LIBCLCXX_DIR}")
 else(CL_INCLUDE_DIR AND CL_LIB_DIR AND CL_LIBCLCXX_DIR)
-    message(STATUS "OpenCL hasn't been found!")
-    message(FATAL_ERROR "Either install OpenCL or pass -DCL_INCLUDE_DIR, -DCL_LIB_DIR and -DCL_LIBCLCXX_DIR")
+  message(STATUS "OpenCL hasn't been found!")
+  message(FATAL_ERROR "Either install OpenCL or pass -DCL_INCLUDE_DIR, -DCL_LIB_DIR and -DCL_LIBCLCXX_DIR")
 endif(CL_INCLUDE_DIR AND CL_LIB_DIR AND CL_LIBCLCXX_DIR)
 
 # CLConform_GL_LIBRARIES_DIR - path to OpenGL libraries
 if(GL_IS_SUPPORTED AND CLConform_GL_LIBRARIES_DIR)
-    link_directories(${CLConform_GL_LIBRARIES_DIR})
+  link_directories(${CLConform_GL_LIBRARIES_DIR})
 endif (GL_IS_SUPPORTED AND CLConform_GL_LIBRARIES_DIR)
 
 include(CheckFunctionExists)
@@ -127,49 +127,49 @@ include(CheckIncludeFiles)
 include(CheckCXXCompilerFlag)
 
 if(CMAKE_SYSTEM_PROCESSOR MATCHES "^(arm.*|ARM.*)")
-    set(CLConform_TARGET_ARCH ARM)
+  set(CLConform_TARGET_ARCH ARM)
 elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "^(aarch64.*|AARCH64.*|arm64.*|ARM64.*)")
-    set(CLConform_TARGET_ARCH ARM64)
+  set(CLConform_TARGET_ARCH ARM64)
 elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "amd64.*|x86_64.*|AMD64.*")
-    set(CLConform_TARGET_ARCH x86_64)
+  set(CLConform_TARGET_ARCH x86_64)
 elseif(CMAKE_SYSTEM_PROCESSOR MATCHES "i686.*|i386.*|x86.*")
-    set(CLConform_TARGET_ARCH x86)
+  set(CLConform_TARGET_ARCH x86)
 endif()
 
 if(NOT DEFINED CLConform_TARGET_ARCH)
-    message (FATAL_ERROR "Target architecture not recognised. Exiting.")
+  message (FATAL_ERROR "Target architecture not recognised. Exiting.")
 endif()
 
 macro(add_cxx_flag_if_supported flag)
-    string(REGEX REPLACE "[-=+]" "" FLAG_NO_SIGNS ${flag})
-    check_cxx_compiler_flag(${flag} COMPILER_SUPPORTS_${FLAG_NO_SIGNS})
-    if(COMPILER_SUPPORTS_${FLAG_NO_SIGNS})
-      set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
-    endif()
+  string(REGEX REPLACE "[-=+]" "" FLAG_NO_SIGNS ${flag})
+  check_cxx_compiler_flag(${flag} COMPILER_SUPPORTS_${FLAG_NO_SIGNS})
+  if(COMPILER_SUPPORTS_${FLAG_NO_SIGNS})
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${flag}")
+  endif()
 endmacro(add_cxx_flag_if_supported)
 
 if(CMAKE_COMPILER_IS_GNUCC OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "(Apple)?Clang")
-    add_cxx_flag_if_supported(-Wno-narrowing)
-    add_cxx_flag_if_supported(-Wno-format)
-    add_cxx_flag_if_supported(-Werror)
-    add_cxx_flag_if_supported(-Wno-error=cpp) # Allow #warning directive
-    add_cxx_flag_if_supported(-Wno-error=absolute-value) # Issue 783
-    add_cxx_flag_if_supported(-Wno-error=unknown-pragmas) # Issue #785
-    add_cxx_flag_if_supported(-Wno-error=asm-operand-widths) # Issue #784
-    add_cxx_flag_if_supported(-Wno-error=overflow) # Fixed by #699
+  add_cxx_flag_if_supported(-Wno-narrowing)
+  add_cxx_flag_if_supported(-Wno-format)
+  add_cxx_flag_if_supported(-Werror)
+  add_cxx_flag_if_supported(-Wno-error=cpp) # Allow #warning directive
+  add_cxx_flag_if_supported(-Wno-error=absolute-value) # Issue 783
+  add_cxx_flag_if_supported(-Wno-error=unknown-pragmas) # Issue #785
+  add_cxx_flag_if_supported(-Wno-error=asm-operand-widths) # Issue #784
+  add_cxx_flag_if_supported(-Wno-error=overflow) # Fixed by #699
 
-    # -msse -mfpmath=sse to force gcc to use sse for float math,
-    # avoiding excess precision problems that cause tests like int2float
-    # to falsely fail. -ffloat-store also works, but WG suggested
-    # that sse would be better.
-    if(${CLConform_TARGET_ARCH} STREQUAL "x86_64" OR ${CLConform_TARGET_ARCH}
-            STREQUAL "x86")
-        set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse -msse2 -mfpmath=sse")
-        set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse -msse2 -mfpmath=sse")
-    endif()
+  # -msse -mfpmath=sse to force gcc to use sse for float math,
+  # avoiding excess precision problems that cause tests like int2float
+  # to falsely fail. -ffloat-store also works, but WG suggested
+  # that sse would be better.
+  if(${CLConform_TARGET_ARCH} STREQUAL "x86_64" OR ${CLConform_TARGET_ARCH}
+      STREQUAL "x86")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -msse -msse2 -mfpmath=sse")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -msse -msse2 -mfpmath=sse")
+  endif()
 else()
-    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /D__SSE__")
-    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D__SSE__")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} /D__SSE__")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /D__SSE__")
 endif()
 
 if( WIN32 AND "${CMAKE_CXX_COMPILER_ID}" MATCHES "Intel" )
@@ -179,16 +179,16 @@ endif()
 
 list(APPEND CLConform_LIBRARIES ${OPENCL_LIBRARIES})
 if(ANDROID)
-    list(APPEND CLConform_LIBRARIES m)
+  list(APPEND CLConform_LIBRARIES m)
 elseif(NOT WIN32)
-    list(APPEND CLConform_LIBRARIES pthread)
+  list(APPEND CLConform_LIBRARIES pthread)
 endif(ANDROID)
 
 if(APPLE)
-    find_library(corefoundation CoreFoundation)
-    find_library(iokit IOKit)
-    list(APPEND CLConform_LIBRARIES ${corefoundation})
-    list(APPEND CLConform_LIBRARIES ${iokit})
+  find_library(corefoundation CoreFoundation)
+  find_library(iokit IOKit)
+  list(APPEND CLConform_LIBRARIES ${corefoundation})
+  list(APPEND CLConform_LIBRARIES ${iokit})
 endif(APPLE)
 
 include_directories(SYSTEM ${CL_INCLUDE_DIR})
@@ -198,9 +198,9 @@ include_directories(${CLConform_SOURCE_DIR}/test_common/harness
                     ${CLConform_SOURCE_DIR}/test_common)
 
 if(CMAKE_BUILD_TYPE STREQUAL "release")
-    set (BUILD_FLAVOR "release")
+  set (BUILD_FLAVOR "release")
 elseif (CMAKE_BUILD_TYPE STREQUAL "debug")
-    set (BUILD_FLAVOR "debug")
+  set (BUILD_FLAVOR "debug")
 endif(CMAKE_BUILD_TYPE STREQUAL "release")
 
 
@@ -213,13 +213,13 @@ set (DLL_FILES "${VS_BUILD_DIR}/Debug/*.dll")
 set (DST_DIR   "${CMAKE_RUNTIME_OUTPUT_DIRECTORY}/Debug/")
 
 if (WIN32)
-    set (COPY "echo")
-    add_custom_target(COPY_DLL${CONFORMANCE_SUFFIX} ALL
-                      COMMAND ${COPY} "${DLL_FILES}" "${DST_DIR}"
-                      COMMENT "Copying dll files.. ")
+  set (COPY "echo")
+  add_custom_target(COPY_DLL${CONFORMANCE_SUFFIX} ALL
+                    COMMAND ${COPY} "${DLL_FILES}" "${DST_DIR}"
+                    COMMENT "Copying dll files.. ")
 else (WIN32)
-    set (COPY cp)
-    add_custom_target(COPY_DLL${CONFORMANCE_SUFFIX})
+  set (COPY cp)
+  add_custom_target(COPY_DLL${CONFORMANCE_SUFFIX})
 endif(WIN32)
 
 set_property(TARGET COPY_DLL${CONFORMANCE_SUFFIX} PROPERTY FOLDER "CONFORMANCE${CONFORMANCE_SUFFIX}")
