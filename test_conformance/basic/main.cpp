@@ -65,7 +65,7 @@ test_definition test_list[] = {
     ADD_TEST(readimage3d),
     ADD_TEST(readimage3d_int16),
     ADD_TEST(readimage3d_fp32),
-    ADD_TEST(bufferreadwriterect),
+    ADD_TEST_VERSION(bufferreadwriterect, Version(1, 1)),
     ADD_TEST(arrayreadwrite),
     ADD_TEST(arraycopy),
     ADD_TEST(imagearraycopy),
@@ -111,8 +111,8 @@ test_definition test_list[] = {
 
     ADD_TEST(async_copy_global_to_local),
     ADD_TEST(async_copy_local_to_global),
-    ADD_TEST(async_strided_copy_global_to_local),
-    ADD_TEST(async_strided_copy_local_to_global),
+    ADD_TEST_VERSION(async_strided_copy_global_to_local, Version(1, 1)),
+    ADD_TEST_VERSION(async_strided_copy_local_to_global, Version(1, 1)),
     ADD_TEST(async_copy_global_to_local2D),
     ADD_TEST(async_copy_local_to_global2D),
     ADD_TEST(async_copy_global_to_local3D),
@@ -145,8 +145,8 @@ test_definition test_list[] = {
     ADD_TEST_VERSION(progvar_prog_scope_init, Version(2, 0)),
     ADD_TEST_VERSION(progvar_func_scope, Version(2, 0)),
 
-    ADD_TEST(global_work_offsets),
-    ADD_TEST(get_global_offset),
+    ADD_TEST_VERSION(global_work_offsets, Version(1, 1)),
+    ADD_TEST_VERSION(get_global_offset, Version(1, 1)),
 
     ADD_TEST_VERSION(global_linear_id, Version(2, 0)),
     ADD_TEST_VERSION(local_linear_id, Version(2, 0)),
