@@ -103,15 +103,6 @@ int test_get_platform_info(cl_device_id deviceID, cl_context context, cl_command
         return -1;
     }
 
-    int major = atoi( p1 );
-    int minor = atoi( p2 );
-    int minor_revision = 2;
-    if( major * 10 + minor < 10 + minor_revision )
-    {
-        log_error( "ERROR: OpenCL profile version returned is less than 1.%d!\n", minor_revision );
-        return -1;
-    }
-
     // Sanity checks on the returned values
     if( length != strlen( (char *)buffer ) + 1)
     {

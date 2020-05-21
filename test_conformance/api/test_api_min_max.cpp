@@ -2008,28 +2008,6 @@ int test_min_max_language_version(cl_device_id deviceID, cl_context context, cl_
     *p2 = ' '; // Put in a space for atoi below.
     p2++;
 
-    int major = atoi( p1 );
-    int minor = atoi( p2 );
-    int minor_revision = 2;
-
-    if( major * 10 + minor < 10 + minor_revision )
-    {
-        // If the language version did not match, check to see if OPENCL_1_0_DEVICE is set.
-        if( getenv("OPENCL_1_0_DEVICE"))
-        {
-          log_info( "WARNING: This test was run with OPENCL_1_0_DEVICE defined!  This is not a OpenCL 1.1 or OpenCL 1.2 compatible device!!!\n" );
-        }
-        else if( getenv("OPENCL_1_1_DEVICE"))
-        {
-          log_info( "WARNING: This test was run with OPENCL_1_1_DEVICE defined!  This is not a OpenCL 1.2 compatible device!!!\n" );
-        }
-        else
-        {
-          log_error( "ERROR: OpenCL device language version returned is less than 1.%d! (Returned: %s)\n", minor_revision, (char *)buffer );
-          return -1;
-        }
-    }
-
     // Sanity checks on the returned values
     if( length != (strlen( (char *)buffer ) + 1 ))
     {
