@@ -18,9 +18,7 @@
 #include <string.h>
 
 #if !defined (_WIN32)
-#include <sys/resource.h>
 #include <libgen.h>
-#include <sys/param.h>
 #endif
 
 #include "harness/testHarness.h"
