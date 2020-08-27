@@ -19,11 +19,6 @@
 #include <stdio.h>
 #include <time.h>
 #include <string.h>
-#if ! defined( _WIN32)
-#if defined(__APPLE__)
-#include <sys/sysctl.h>
-#endif
-#endif
 #include <limits.h>
 #include "test_select.h"
 
