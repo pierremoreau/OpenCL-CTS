@@ -26,15 +26,15 @@
 #endif
 
 test_definition test_list[] = {
-    ADD_TEST( partition_equally ),
-    ADD_TEST( partition_by_counts ),
-    ADD_TEST( partition_by_affinity_domain_numa ),
-    ADD_TEST( partition_by_affinity_domain_l4_cache ),
-    ADD_TEST( partition_by_affinity_domain_l3_cache ),
-    ADD_TEST( partition_by_affinity_domain_l2_cache ),
-    ADD_TEST( partition_by_affinity_domain_l1_cache ),
-    ADD_TEST( partition_by_affinity_domain_next_partitionable ),
-    ADD_TEST( partition_all ),
+    ADD_TEST_VERSION( partition_equally, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_by_counts, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_by_affinity_domain_numa, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_by_affinity_domain_l4_cache, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_by_affinity_domain_l3_cache, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_by_affinity_domain_l2_cache, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_by_affinity_domain_l1_cache, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_by_affinity_domain_next_partitionable, Version(1, 2) ),
+    ADD_TEST_VERSION( partition_all, Version(1, 2) ),
 };
 
 const int test_num = ARRAY_SIZE( test_list );
