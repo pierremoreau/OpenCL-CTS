@@ -79,17 +79,17 @@ int test_3Dto2Darray(cl_device_id device, cl_context context, cl_command_queue q
 }
 
 test_definition test_list[] = {
-    ADD_TEST( 1D ),
+    ADD_TEST_VERSION( 1D, Version(1, 2) ),
     ADD_TEST( 2D ),
     ADD_TEST( 3D ),
-    ADD_TEST( 1Darray ),
-    ADD_TEST( 2Darray ),
+    ADD_TEST_VERSION( 1Darray, Version(1, 2) ),
+    ADD_TEST_VERSION( 2Darray, Version(1, 2) ),
     ADD_TEST( 2Dto3D ),
     ADD_TEST( 3Dto2D ),
-    ADD_TEST( 2Darrayto2D ),
-    ADD_TEST( 2Dto2Darray ),
-    ADD_TEST( 2Darrayto3D ),
-    ADD_TEST( 3Dto2Darray ),
+    ADD_TEST_VERSION( 2Darrayto2D, Version(1, 2) ),
+    ADD_TEST_VERSION( 2Dto2Darray, Version(1, 2) ),
+    ADD_TEST_VERSION( 2Darrayto3D, Version(1, 2) ),
+    ADD_TEST_VERSION( 3Dto2Darray, Version(1, 2) ),
 };
 
 const int test_num = ARRAY_SIZE( test_list );

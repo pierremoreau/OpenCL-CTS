@@ -59,14 +59,14 @@ int test_event_enqueue_wait_for_events_run_test( cl_device_id deviceID, cl_conte
     clMemWrapper data;
     clProgramWrapper program;
     clKernelWrapper kernel1[TEST_COUNT], kernel2[TEST_COUNT];
-    clEventWrapper event[TEST_COUNT*4+2]; // If we usemarkers we get 2 more events per iteration
+    clEventWrapper event[TEST_COUNT*4+2]; // If we use markers we get 2 more events per iteration
 
     if (test_enqueue_wait_for_events)
         log_info("\tTesting with clEnqueueBarrierWithWaitList as barrier function.\n");
     if (test_barrier)
         log_info("\tTesting with clEnqueueBarrierWithWaitList as barrier function.\n");
     if (use_waitlist)
-        log_info("\tTesting with waitlist-based depenednecies between kernels.\n");
+        log_info("\tTesting with waitlist-based dependencies between kernels.\n");
     if (use_marker)
         log_info("\tTesting with clEnqueueMarker as a barrier function.\n");
     if (test_barrier && (two_queues || two_devices)) {

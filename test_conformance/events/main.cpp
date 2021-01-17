@@ -35,10 +35,8 @@ test_definition test_list[] = {
     ADD_TEST( event_finish_array ),
     ADD_TEST( event_release_before_done ),
     ADD_TEST( event_enqueue_marker ),
-#ifdef CL_VERSION_1_2
-    ADD_TEST( event_enqueue_marker_with_event_list ),
-    ADD_TEST( event_enqueue_barrier_with_event_list ),
-#endif
+    ADD_TEST_VERSION( event_enqueue_marker_with_event_list, Version(1, 2) ),
+    ADD_TEST_VERSION( event_enqueue_barrier_with_event_list, Version(1, 2) ),
 
     ADD_TEST( out_of_order_event_waitlist_single_queue ),
     ADD_TEST( out_of_order_event_waitlist_multi_queue ),

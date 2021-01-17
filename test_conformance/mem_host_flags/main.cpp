@@ -30,15 +30,15 @@
 #endif
 
 test_definition test_list[] = {
-    ADD_TEST( mem_host_read_only_buffer ),
-    ADD_TEST( mem_host_read_only_subbuffer ),
-    ADD_TEST( mem_host_write_only_buffer ),
-    ADD_TEST( mem_host_write_only_subbuffer ),
-    ADD_TEST( mem_host_no_access_buffer ),
-    ADD_TEST( mem_host_no_access_subbuffer ),
-    ADD_TEST( mem_host_read_only_image ),
-    ADD_TEST( mem_host_write_only_image ),
-    ADD_TEST( mem_host_no_access_image ),
+    ADD_TEST_VERSION( mem_host_read_only_buffer, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_read_only_subbuffer, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_write_only_buffer, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_write_only_subbuffer, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_no_access_buffer, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_no_access_subbuffer, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_read_only_image, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_write_only_image, Version(1, 2) ),
+    ADD_TEST_VERSION( mem_host_no_access_image, Version(1, 2) ),
 };
 
 const int test_num = ARRAY_SIZE( test_list );
