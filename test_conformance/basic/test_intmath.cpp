@@ -182,12 +182,12 @@ int test_intmath(cl_device_id device, cl_context context,
             {
                 log_error("\n\nverification failed at index %d\n", i);
                 log_error("-> inputs: %llu, %llu, %llu\n",
-                          static_cast<cl_uint>(inputA[i]),
-                          static_cast<cl_uint>(inputB[i]),
-                          static_cast<cl_uint>(inputC[i]));
+                          static_cast<cl_ulong>(inputA[i]),
+                          static_cast<cl_ulong>(inputB[i]),
+                          static_cast<cl_ulong>(inputC[i]));
                 log_error("-> expected %llu, got %llu\n\n",
-                          static_cast<cl_uint>(r),
-                          static_cast<cl_uint>(output[i]));
+                          static_cast<cl_ulong>(r),
+                          static_cast<cl_ulong>(output[i]));
                 return TEST_FAIL;
             }
         }
