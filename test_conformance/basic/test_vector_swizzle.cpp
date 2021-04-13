@@ -31,6 +31,10 @@ template <> struct TestInfo<2>
     static const size_t vector_size = 2;
 
     static constexpr const char* kernel_source_xyzw = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -49,6 +53,10 @@ __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
 )CLC";
 
     static constexpr const char* kernel_source_rgba = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -67,6 +75,10 @@ __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
 )CLC";
 
     static constexpr const char* kernel_source_sN = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_sN(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -90,6 +102,10 @@ template <> struct TestInfo<3>
     static const size_t vector_size = 4; // sizeof(vec3) is four elements
 
     static constexpr const char* kernel_source_xyzw = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -116,6 +132,10 @@ __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
 )CLC";
 
     static constexpr const char* kernel_source_rgba = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -142,6 +162,10 @@ __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
 )CLC";
 
     static constexpr const char* kernel_source_sN = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_sN(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -173,6 +197,10 @@ template <> struct TestInfo<4>
     static const size_t vector_size = 4;
 
     static constexpr const char* kernel_source_xyzw = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -195,6 +223,10 @@ __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
 )CLC";
 
     static constexpr const char* kernel_source_rgba = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -217,6 +249,10 @@ __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
 )CLC";
 
     static constexpr const char* kernel_source_sN = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_sN(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -244,6 +280,10 @@ template <> struct TestInfo<8>
     static const size_t vector_size = 8;
 
     static constexpr const char* kernel_source_xyzw = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -277,6 +317,10 @@ __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
 }
 )CLC";
     static constexpr const char* kernel_source_rgba = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -310,6 +354,10 @@ __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
 }
 )CLC";
     static constexpr const char* kernel_source_sN = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_sN(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -345,6 +393,10 @@ template <> struct TestInfo<16>
     static const size_t vector_size = 16;
 
     static constexpr const char* kernel_source_xyzw = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -398,6 +450,10 @@ __kernel void test_vector_swizzle_xyzw(TYPE value, __global TYPE* dst) {
 }
 )CLC";
     static constexpr const char* kernel_source_rgba = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
     int index = 0;
 
@@ -451,6 +507,10 @@ __kernel void test_vector_swizzle_rgba(TYPE value, __global TYPE* dst) {
 }
 )CLC";
     static constexpr const char* kernel_source_sN = R"CLC(
+#if __OPENCL_VERSION__ <= CL_VERSION_1_1
+#pragma OPENCL EXTENSION cl_khr_fp64 : enable
+#endif
+
 __kernel void test_vector_swizzle_sN(TYPE value, __global TYPE* dst) {
     int index = 0;
 
