@@ -113,18 +113,28 @@ test_definition test_list[] = {
     ADD_TEST(async_copy_local_to_global),
     ADD_TEST_VERSION(async_strided_copy_global_to_local, Version(1, 1)),
     ADD_TEST_VERSION(async_strided_copy_local_to_global, Version(1, 1)),
-    ADD_TEST(async_copy_global_to_local2D),
-    ADD_TEST(async_copy_local_to_global2D),
-    ADD_TEST(async_copy_global_to_local3D),
-    ADD_TEST(async_copy_local_to_global3D),
-    ADD_TEST(async_work_group_copy_fence_import_after_export_aliased_local),
-    ADD_TEST(async_work_group_copy_fence_import_after_export_aliased_global),
-    ADD_TEST(
-        async_work_group_copy_fence_import_after_export_aliased_global_and_local),
-    ADD_TEST(async_work_group_copy_fence_export_after_import_aliased_local),
-    ADD_TEST(async_work_group_copy_fence_export_after_import_aliased_global),
-    ADD_TEST(
-        async_work_group_copy_fence_export_after_import_aliased_global_and_local),
+    ADD_TEST_VERSION(async_copy_global_to_local2D, Version(1, 2)),
+    ADD_TEST_VERSION(async_copy_local_to_global2D, Version(1, 2)),
+    ADD_TEST_VERSION(async_copy_global_to_local3D, Version(1, 2)),
+    ADD_TEST_VERSION(async_copy_local_to_global3D, Version(1, 2)),
+    ADD_TEST_VERSION(
+        async_work_group_copy_fence_import_after_export_aliased_local,
+        Version(1, 2)),
+    ADD_TEST_VERSION(
+        async_work_group_copy_fence_import_after_export_aliased_global,
+        Version(1, 2)),
+    ADD_TEST_VERSION(
+        async_work_group_copy_fence_import_after_export_aliased_global_and_local,
+        Version(1, 2)),
+    ADD_TEST_VERSION(
+        async_work_group_copy_fence_export_after_import_aliased_local,
+        Version(1, 2)),
+    ADD_TEST_VERSION(
+        async_work_group_copy_fence_export_after_import_aliased_global,
+        Version(1, 2)),
+    ADD_TEST_VERSION(
+        async_work_group_copy_fence_export_after_import_aliased_global_and_local,
+        Version(1, 2)),
     ADD_TEST(prefetch),
     ADD_TEST(kernel_call_kernel_function),
     ADD_TEST(host_numeric_constants),
